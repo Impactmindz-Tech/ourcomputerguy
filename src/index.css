@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+:root{
+    --primary-color_200: #212121;
+    /* h1  */
+    --h1-font-Size:22px;
+    --h1-Font-Weight:600;
+
+    /* h2  */
+    --h2-font-Size:14px;
+    --h2-Font-Weight:400;
+
+    /* h3  */
+    --h3-font-Size:18px;
+    --h3-Font-Weight:600;
+}
+
+h1{
+    font-size: var(--h1-font-Size);
+    font-weight: var(--h1-Font-Weight);
+}
+
+h2{
+    font-size: var(--h2-font-Size);
+    font-weight: var(--h2-Font-Weight);
+    color: var(--primary-color_200);
+}
+h3{
+    font-size: var(--h3-font-Size);
+    font-weight: var(--h3-Font-Weight);
+    color: var(--primary-color_200);
+}
+
+body{
+    background-color: #f1f2f4;
+}
