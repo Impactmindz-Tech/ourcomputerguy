@@ -35,7 +35,7 @@ const ProductCart = ({ item }) => {
     return (
         <div className='border p-4 rounded-md border-[#e0e0e0] relative'>
             {isSelected && (
-                <div className='absolute bg-[#646ea6] top-3 right-3 p-1 rounded-full'>
+                <div className='absolute bg-black-200 top-3 right-3 p-1 rounded-full'>
                     <CheckIcon sx={{ color: '#fff' }} />
                 </div>
             )}
@@ -52,7 +52,7 @@ const ProductCart = ({ item }) => {
                     <div className='flex justify-center mt-3'>
                         <button
                             type="button"
-                            className="sign-in text-center mt-3 bg-blue-900 text-[red] text-xs font-semibold px-12 py-3 rounded-lg flex items-center gap-x-2"
+                            className="sign-in text-center mt-3 bg-black-200 text-[#fff] text-xs font-semibold px-12 py-3 rounded-lg flex items-center gap-x-2"
                             onClick={() => handleRemoveCart(item)}
                         >
                             Remove From Cart
