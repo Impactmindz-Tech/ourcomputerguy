@@ -1,10 +1,9 @@
-// CartSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     Cart: [],
     products: []
-}
+};
 
 const CartSlice = createSlice({
     name: "ecom",
@@ -29,6 +28,7 @@ const CartSlice = createSlice({
             const existingProduct = state.Cart.find(item => item.id === action.payload.id);
             if (existingProduct && existingProduct.quantity > 1) {
                 existingProduct.quantity -= 1;
+                existingProduct.totalPrice = existingProduct.price * existingProduct.quantity;
             } else {
                 state.Cart = state.Cart.filter(item => item.id !== action.payload.id);
             }
