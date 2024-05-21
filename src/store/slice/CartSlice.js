@@ -10,11 +10,11 @@ const CartSlice = createSlice({
     name: "ecom",
     initialState,
     reducers: {
-        setCart: (state, action) => {
-            state.Cart = action.payload;
-        },
         setProducts: (state, action) => {
             state.products = action.payload;
+        },
+        setCart: (state, action) => {
+            state.Cart = action.payload;
         },
         addToCart: (state, action) => {
             const existingProduct = state.Cart.find(item => item.id === action.payload.id);
