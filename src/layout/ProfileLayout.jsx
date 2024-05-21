@@ -7,9 +7,10 @@ const ProfileLayout = ({ children }) => {
         <div className=''>
             <Header />
             <div className="container">
+            <h1 className='py-5'>My Profile</h1>
                 <div className='flex'>
                     <div className='w-[20%]'>
-                        <div className='bg-white mt-8 p-6 flex gap-3'>
+                        <div className='bg-white p-6 flex gap-3'>
                             <img className='w-12 h-12' src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/profile-pic-male_4811a1.svg" alt="" />
                             <div>
                                 <span className='text-xs'>Hello,</span>

@@ -44,9 +44,9 @@ const ProductCart = ({ item }) => {
                 <h2 className='text-center'>{item.caption}</h2>
                 <p className='font-semibold text-center'>₹ {item.discount}</p>
                 <div className='flex justify-center gap-10 mt-3' onClick={(e) => e.stopPropagation()}>
-                    <AddCircleIcon onClick={() => handleAddProduct(item)} />
+                    <RemoveCircleIcon sx={{ color: isSelected ? '#212121' : '#646ea6' }} onClick={() => handleRemoveProduct(item)} />
                     <div>{getItemQuantity(item)}</div>
-                    <RemoveCircleIcon onClick={() => handleRemoveProduct(item)} />
+                    <AddCircleIcon sx={{ color: isSelected ? '#212121' : '#646ea6' }} onClick={() => handleAddProduct(item)} />
                 </div>
                 {isSelected ? (
                     <div className='flex justify-center mt-3'>

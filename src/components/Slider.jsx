@@ -6,15 +6,15 @@ import Images from '../constant/Images'
 const Slider = () => {
     return (
         <Carousel className='pt-8' autoPlay={true} interval={2000} infiniteLoop={true} showThumbs={false}>
-            <div>
+            {/* <div>
                 <img src={Images.Slider_img1} />
-            </div>
+            </div> */}
             <div>
                 <img src={Images.Slider_img2} />
             </div>
-            <div>
+            {/* <div>
                 <img src={Images.Slider_img3} />
-            </div>
+            </div> */}
         </Carousel>
     )
 }

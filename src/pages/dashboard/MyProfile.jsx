@@ -3,7 +3,7 @@ import React from 'react'
 const MyProfile = () => {
     return (
         <div className="container">
-            <div className='bg-white mt-8 p-6'>
+            <div className='bg-white p-6'>
                 <h3>Personal Information</h3>
                 <div className='flex flex-col gap-4 mt-8'>
                     <div className='flex gap-4 flex-wrap'>

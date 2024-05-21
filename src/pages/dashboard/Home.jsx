@@ -18,7 +18,7 @@ const Home = () => {
       <Slider />
       <div className='bg-white my-8 p-6'>
         <h1>Products</h1>
-        <div className='grid grid-cols-5 gap-4 pt-5'>
+        <div className='grid grid-cols-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pt-5'>
           {allProducts?.map((product, index) => (
             <ProductCart
               key={index}

@@ -5,7 +5,9 @@ const orderList = [
         productName:"CAZZBA Men Solid Casual Grey Shirt",
         price:"474",
         status:"Delivery expected by Thu May 23",
-        shipmentStatus:"Your item has been shipped."
+        shipmentStatus:"Your item has been shipped.",
+        sku:"sku17 | 15",
+        productsOrder:"10"
     },
     {
         id:'2',
@@ -13,7 +15,9 @@ const orderList = [
         productName:"CAZZBA Men Solid Casual Grey Shirt",
         price:"474",
         status:"Delivery expected by Thu May 23",
-        shipmentStatus:"Your item has been shipped."
+        shipmentStatus:"Your item has been shipped.",
+        sku:"sku17 | 15",
+        productsOrder:"10"
     },
     {
         id:'3',
@@ -21,7 +25,9 @@ const orderList = [
         productName:"CAZZBA Men Solid Casual Grey Shirt",
         price:"474",
         status:"Delivery expected by Thu May 23",
-        shipmentStatus:"Your item has been shipped."
+        shipmentStatus:"Your item has been shipped.",
+        sku:"sku17 | 15",
+        productsOrder:"10"
     },
     {
         id:'4',
@@ -29,7 +35,9 @@ const orderList = [
         productName:"CAZZBA Men Solid Casual Grey Shirt",
         price:"474",
         status:"Delivery expected by Thu May 23",
-        shipmentStatus:"Your item has been shipped."
+        shipmentStatus:"Your item has been shipped.",
+        sku:"sku17 | 15",
+        productsOrder:"10"
     },
     {
         id:'5',
@@ -37,7 +45,9 @@ const orderList = [
         productName:"CAZZBA Men Solid Casual Grey Shirt",
         price:"474",
         status:"Delivery expected by Thu May 23",
-        shipmentStatus:"Your item has been shipped."
+        shipmentStatus:"Your item has been shipped.",
+        sku:"sku17 | 15",
+        productsOrder:"10"
     },
 ]
 
