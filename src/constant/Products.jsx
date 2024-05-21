@@ -7,7 +7,7 @@ const productData = {
             title: "Canon MG2570S Multi-function Color Inkjet Printer  (Ink Cartridge)",
             rating: "3.7",
             caption: "Canon MG2570S Multi-function Color",
-            discount:"1000",
+            price:"1000",
         },
         {
             id: 2,
@@ -16,7 +16,7 @@ const productData = {
             title: "Canon MG2570S Multi-function Color Inkjet Printer  (Ink Cartridge)",
             rating: "3.7",
             caption: "Canon MG2570S Multi-function Color",
-            discount:"2000",
+            price:"2000",
         },
         {
             id: 3,
@@ -25,7 +25,7 @@ const productData = {
             title: "Canon MG2570S Multi-function Color Inkjet Printer  (Ink Cartridge)",
             rating: "3.7",
             caption: "Canon MG2570S Multi-function Color",
-            discount:"3000",
+            price:"3000",
         },
         {
             id: 4,
@@ -34,7 +34,7 @@ const productData = {
             title: "Canon MG2570S Multi-function Color Inkjet Printer  (Ink Cartridge)",
             rating: "3.7",
             caption: "Canon MG2570S Multi-function Color",
-            discount:"3000",
+            price:"2500",
         },
         {
             id: 5,
@@ -43,7 +43,7 @@ const productData = {
             title: "Canon MG2570S Multi-function Color Inkjet Printer  (Ink Cartridge)",
             rating: "3.7",
             caption: "Canon MG2570S Multi-function Color",
-            discount:"3000",
+            price:"1500",
         },
         {
             id: 6,
@@ -52,7 +52,7 @@ const productData = {
             title: "Canon MG2570S Multi-function Color Inkjet Printer  (Ink Cartridge)",
             rating: "3.7",
             caption: "Canon MG2570S Multi-function Color",
-            discount:"3000",
+            price:"1300",
         },
         {
             id: 7,
@@ -61,7 +61,7 @@ const productData = {
             title: "Canon MG2570S Multi-function Color Inkjet Printer  (Ink Cartridge)",
             rating: "3.7",
             caption: "Canon MG2570S Multi-function Color",
-            discount:"3000",
+            price:"3500",
         },
         {
             id: 8,
@@ -70,7 +70,7 @@ const productData = {
             title: "Canon MG2570S Multi-function Color Inkjet Printer  (Ink Cartridge)",
             rating: "3.7",
             caption: "Canon MG2570S Multi-function Color",
-            discount:"3000",
+            price:"7500",
         },
         {
             id: 9,
@@ -79,7 +79,7 @@ const productData = {
             title: "Canon MG2570S Multi-function Color Inkjet Printer  (Ink Cartridge)",
             rating: "3.7",
             caption: "Canon MG2570S Multi-function Color",
-            discount:"3000",
+            price:"8900",
         },
         {
             id: 10,
@@ -88,7 +88,7 @@ const productData = {
             title: "Canon MG2570S Multi-function Color Inkjet Printer  (Ink Cartridge)",
             rating: "3.7",
             caption: "Canon MG2570S Multi-function Color",
-            discount:"3000",
+            price:"500",
         },
         // {
         //     id: 11,
@@ -97,7 +97,7 @@ const productData = {
         //     title: "Canon MG2570S Multi-function Color Inkjet Printer  (Ink Cartridge)",
         //     rating: "3.7",
         //     caption: "Canon MG2570S Multi-function Color",
-        //     discount:"3000",
+        //     price:"3000",
         // },
         // {
         //     id: 12,
@@ -106,7 +106,7 @@ const productData = {
         //     title: "Canon MG2570S Multi-function Color Inkjet Printer  (Ink Cartridge)",
         //     rating: "3.7",
         //     caption: "Canon MG2570S Multi-function Color",
-        //     discount:"3000",
+        //     price:"3000",
         // },
     ]
 };
