@@ -33,7 +33,7 @@ const ProductCart = ({ item }) => {
     };
 
     return (
-        <div className='border p-4 rounded-md border-[#e0e0e0] relative'>
+        <div className='border cursor-pointer p-4 rounded-md border-[#e0e0e0] relative'>
             {isSelected && (
                 <div className='absolute bg-black-200 top-3 right-3 p-1 rounded-full'>
                     <CheckIcon sx={{ color: '#fff' }} />
@@ -49,20 +49,20 @@ const ProductCart = ({ item }) => {
                     <AddCircleIcon sx={{ color: isSelected ? '#212121' : '#646ea6' }} onClick={() => handleAddProduct(item)} />
                 </div>
                 {isSelected ? (
-                    <div className='flex justify-center mt-3'>
+                    <div className='text-center mt-3'>
                         <button
                             type="button"
-                            className="sign-in text-center mt-3 bg-black-200 text-[#fff] text-xs font-semibold px-12 py-3 rounded-lg flex items-center gap-x-2"
+                            className="main_btn mt-3 bg-black-200 text-[#fff] text-xs font-semibold px-12 py-3 rounded-lg"
                             onClick={() => handleRemoveCart(item)}
                         >
                             Remove From Cart
                         </button>
                     </div>
                 ) : (
-                    <div className='flex justify-center mt-3'>
+                    <div className='text-center mt-3'>
                         <button
                             type="button"
-                            className="sign-in text-center mt-3 bg-blue-900 text-white text-xs font-semibold px-12 py-3 rounded-lg flex items-center gap-x-2"
+                            className="main_btn mt-3 bg-blue-900 text-white text-xs font-semibold px-12 py-3 rounded-lg"
                             onClick={() => handleAddProduct(item)}
                         >
                             Add To Cart

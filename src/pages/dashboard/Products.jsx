@@ -30,8 +30,8 @@ const Products = () => {
                         />
                     ))}
                 </div>
-                <div className='flex justify-center mt-10'>
-                    <button type="submit" className="sign-in text-center mt-3 bg-blue-900 text-white text-xs font-semibold px-12 py-3 rounded-lg flex items-center gap-x-2">
+                <div className='text-center mt-10'>
+                    <button type="submit" className="main_btn mt-3 bg-blue-900 text-white text-xs font-semibold px-12 py-3 rounded-lg">
                         Order Now
                     </button>
                 </div>
