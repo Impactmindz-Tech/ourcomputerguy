@@ -42,7 +42,7 @@ const ProductCart = ({ item }) => {
             <img className='w-full h-[100px] object-contain' src={item.thumbnail} alt={item.caption} />
             <div className='pt-8'>
                 <h2 className='text-center'>{item.caption}</h2>
-                <p className='font-semibold text-center'>₹ {getItemQuantity(item) * item.price || item.price}</p>
+                <p className='font-semibold text-center'>₹ {item.price}</p>
                 <div className='flex justify-center gap-10 mt-3' onClick={(e) => e.stopPropagation()}>
                     <RemoveCircleIcon sx={{ color: isSelected ? '#212121' : '#646ea6' }} onClick={() => handleRemoveProduct(item)} />
                     <div>{getItemQuantity(item)}</div>
