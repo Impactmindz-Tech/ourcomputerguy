@@ -1,24 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, redirect, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 import { profileValidation } from '../../utils/validation/Validation'
 import { useLoginApiMutation } from '../../store/service/AuthService';
 import { setLocalStorage } from '../../utils/LocalStorageUtills';
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Login = () => {
     const [formData] = useLoginApiMutation()
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
     const onSubmit = async (data) => {
+        setLoading(true)
         try {
             const responce = await formData(data)
             if (responce?.data?.status) {
                 console.log(responce)
-                setLocalStorage('user' , responce?.data?.user_data)
+                setLocalStorage('user', responce?.data?.user_data)
                 navigate('/user/dashboard')
             }
         } catch (error) {
             console.log(error)
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -40,8 +45,11 @@ const Login = () => {
                 </div>
                 <p className='text-[red]'>{errors?.password?.message}</p>
                 <p className="text-[11px] my-2 mr-2 text-input-placeholder w-max ml-auto" >Forgot Password ?</p>
-                <button type="submit" className="sign-in text-center mt-3 bg-blue-900 text-white text-xs font-semibold px-12 py-3 rounded-lg flex items-center gap-x-2">
-                    <span className='w-full'>Sign In</span>
+                <button type="submit" className="sign-in text-center mt-3 bg-blue-900 text-white text-xs font-semibold px-12 py-3 rounded-lg">
+                    <div className='flex items-center justify-center'>
+                        <span className=''>Sign In</span>
+                        <ClipLoader size={15} className='ml-2' color='#fff' loading={loading} />
+                    </div>
                 </button>
             </form>
             {/* <div className='mt-5'>
