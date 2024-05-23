@@ -11,9 +11,9 @@ const ProductCart = ({ item }) => {
     const [isSelected, setIsSelected] = useState(false);
 
     useEffect(() => {
-        const isItemInCart = cart.some(cartItem => cartItem.id === item.id);
+        const isItemInCart = cart.some(cartItem => cartItem.product_id === item.product_id);
         setIsSelected(isItemInCart);
-    }, [cart, item.id]);
+    }, [cart, item.product_id]);
 
     const handleAddProduct = () => {
         dispatch(addToCart(item));
@@ -28,7 +28,7 @@ const ProductCart = ({ item }) => {
     };
 
     const getItemDetails = () => {
-        return cart.find(cartItem => cartItem.id === item.id) || { quantity: 0, totalPrice: 0 };
+        return cart.find(cartItem => cartItem.product_id === item.product_id) || { quantity: 0, totalPrice: 0 };
     };
 
     const { quantity, totalPrice } = getItemDetails();
@@ -40,11 +40,10 @@ const ProductCart = ({ item }) => {
                     <CheckIcon sx={{ color: '#fff' }} />
                 </div>
             )}
-            <img className='w-full h-[100px] object-contain' src={item.thumbnail} alt={item.caption} />
+            <img className='w-full h-[100px] object-contain' src={item.product_image} alt={item.caption} />
             <div className='pt-8'>
-                <h2 className='text-center'>{item.caption}</h2>
-                <p className='font-semibold text-center'>₹ {totalPrice ? totalPrice : item.price}</p>
-
+                <h2 className='text-center'>{item.product_name}</h2>
+                <p className='font-semibold text-center'>₹ {totalPrice ? totalPrice : item.product_price}</p>
                 <div className='flex justify-center gap-10 mt-3' onClick={(e) => e.stopPropagation()}>
                     <RemoveCircleIcon sx={{ color: isSelected ? '#212121' : '#646ea6' }} onClick={() => handleRemoveProduct()} />
                     <div>{quantity}</div>

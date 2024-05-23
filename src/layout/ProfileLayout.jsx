@@ -18,7 +18,7 @@ const ProfileLayout = ({ children }) => {
                             </div>
                         </div>
                         <div className='mt-5 bg-white p-6'>
-                           <Link to='/myorder'><h3 className='text-light_Grey border-b pb-4'>My Order</h3></Link>
+                           <Link to='/user/myorder'><h3 className='text-light_Grey border-b pb-4'>My Order</h3></Link>
                            <Link to='/'><h3 className='text-light_Grey pt-4'>Log Out</h3></Link>
                         </div>
                     </div>

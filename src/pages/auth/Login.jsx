@@ -14,9 +14,8 @@ const Login = () => {
             const responce = await formData(data)
             if (responce?.data?.status) {
                 console.log(responce)
-                sessionStorage.setItem('user' , JSON.stringify(responce))
                 setLocalStorage('user' , responce?.data?.user_data)
-                navigate('/home')
+                navigate('/user/dashboard')
             }
         } catch (error) {
             console.log(error)

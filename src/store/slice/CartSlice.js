@@ -16,25 +16,25 @@ const CartSlice = createSlice({
             state.Cart = action.payload;
         },
         addToCart: (state, action) => {
-            const existingProduct = state.Cart.find(item => item.id === action.payload.id);
+            const existingProduct = state.Cart.find(item => item.product_id === action.payload.product_id);
             if (existingProduct) {
                 existingProduct.quantity += 1;
-                existingProduct.totalPrice = existingProduct.price * existingProduct.quantity;
+                existingProduct.totalPrice = existingProduct.product_price * existingProduct.quantity;
             } else {
-                state.Cart.push({ ...action.payload, quantity: 1, totalPrice: action.payload.price });
+                state.Cart.push({ ...action.payload, quantity: 1, totalPrice: action.payload.product_price });
             }
         },
         removeFromCart: (state, action) => {
-            const existingProduct = state.Cart.find(item => item.id === action.payload.id);
+            const existingProduct = state.Cart.find(item => item.product_id === action.payload.product_id);
             if (existingProduct && existingProduct.quantity > 1) {
                 existingProduct.quantity -= 1;
-                existingProduct.totalPrice = existingProduct.price * existingProduct.quantity;
+                existingProduct.totalPrice = existingProduct.product_price * existingProduct.quantity;
             } else {
-                state.Cart = state.Cart.filter(item => item.id !== action.payload.id);
+                state.Cart = state.Cart.filter(item => item.product_id !== action.payload.product_id);
             }
         },
         removeItemFromCart: (state, action) => {
-            state.Cart = state.Cart.filter(item => item.id !== action.payload.id);
+            state.Cart = state.Cart.filter(item => item.product_id !== action.payload.product_id);
         }
     }
 });

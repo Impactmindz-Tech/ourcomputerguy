@@ -24,9 +24,9 @@ const Header = () => {
                     </div>
                     <nav>
                         <ul className='flex gap-10'>
-                            <Link to='/home'><MenuItem>Home</MenuItem></Link>
-                            <Link to='/products'><MenuItem>Products</MenuItem></Link>
-                            <Link to='/myorder'><MenuItem>My Order</MenuItem></Link>
+                            <Link to='/user/dashboard'><MenuItem>Home</MenuItem></Link>
+                            <Link to='/user/products'><MenuItem>Products</MenuItem></Link>
+                            <Link to='/user/myorder'><MenuItem>My Order</MenuItem></Link>
                         </ul>
                     </nav>
                     <div>
@@ -48,8 +48,8 @@ const Header = () => {
                                 'aria-labelledby': 'basic-button',
                             }}
                         >
-                            <Link to='/myprofile'><MenuItem onClick={handleClose}>My Profile</MenuItem></Link>
-                            <Link to='/myorder'><MenuItem onClick={handleClose}>My Order</MenuItem></Link>
+                            <Link to='/user/myprofile'><MenuItem onClick={handleClose}>My Profile</MenuItem></Link>
+                            <Link to='/user/myorder'><MenuItem onClick={handleClose}>My Order</MenuItem></Link>
                             <MenuItem>Product Request</MenuItem>
                             <Link to='/'><MenuItem onClick={logOut}>Logout</MenuItem></Link>
                         </Menu>
