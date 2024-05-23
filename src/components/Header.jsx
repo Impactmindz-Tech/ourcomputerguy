@@ -12,6 +12,9 @@ const Header = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const logOut = () => {
+        localStorage.clear()
+    };
     return (
         <header className='bg-white py-5 sm:hidden'>
             <div className="container">
@@ -48,7 +51,7 @@ const Header = () => {
                             <Link to='/myprofile'><MenuItem onClick={handleClose}>My Profile</MenuItem></Link>
                             <Link to='/myorder'><MenuItem onClick={handleClose}>My Order</MenuItem></Link>
                             <MenuItem>Product Request</MenuItem>
-                            <Link to='/'><MenuItem onClick={handleClose}>Logout</MenuItem></Link>
+                            <Link to='/'><MenuItem onClick={logOut}>Logout</MenuItem></Link>
                         </Menu>
                     </div>
                 </div>

@@ -3,11 +3,24 @@ import { Link, redirect, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 import { profileValidation } from '../../utils/validation/Validation'
+import { useLoginApiMutation } from '../../store/service/AuthService';
+import { setLocalStorage } from '../../utils/LocalStorageUtills';
 
 const Login = () => {
+    const [formData] = useLoginApiMutation()
     const navigate = useNavigate()
-    const onSubmit = () => {
-        navigate('/home')
+    const onSubmit = async (data) => {
+        try {
+            const responce = await formData(data)
+            if (responce?.data?.status) {
+                console.log(responce)
+                sessionStorage.setItem('user' , JSON.stringify(responce))
+                setLocalStorage('user' , responce?.data?.user_data)
+                navigate('/home')
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(profileValidation) })
@@ -32,7 +45,7 @@ const Login = () => {
                     <span className='w-full'>Sign In</span>
                 </button>
             </form>
-            <div className='mt-5'>
+            {/* <div className='mt-5'>
                 <div className='flex items-center'>
                     <span className='w-[28%] h-[1px] bg-blue-900'></span>
                     <p className='w-[44%] text-xs'>New to Our Computer guy?</p>
@@ -43,7 +56,7 @@ const Login = () => {
                         <button className='text-xs font-semibold'>Sign Up</button>
                     </div>
                 </Link>
-            </div>
+            </div> */}
         </div>
     )
 }

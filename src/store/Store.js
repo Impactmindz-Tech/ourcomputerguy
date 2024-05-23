@@ -1,14 +1,13 @@
-// Store.js
-import { configureStore } from "@reduxjs/toolkit";
-import CartSlice from "./slice/CartSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import { baseApi } from '../utils/FetchBaseQuery';
 
-const Store = configureStore({
+const store = configureStore({
     reducer: {
-        [CartSlice.name]: CartSlice.reducer,
-        // [videoSlice.reducerPath]: videoSlice.reducer,
+        [baseApi.reducerPath]: baseApi.reducer,
+        // Add other reducers here
     },
-    // middleware: (getDefaultMiddleware) =>
-    //     getDefaultMiddleware().concat(baseApi.middleware)
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(baseApi.middleware),
 });
 
-export default Store;
+export default store;

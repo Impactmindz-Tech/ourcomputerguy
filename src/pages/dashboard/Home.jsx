@@ -4,9 +4,11 @@ import productData from '../../constant/Products';
 import ProductCart from '../../components/ProductCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { setProducts } from '../../store/slice/CartSlice';
+import { useProductsQuery } from '../../store/service/HomeService';
 
 const Home = () => {
   const dispatch = useDispatch()
+  const { data: Products } = useProductsQuery()
   const allProducts = useSelector((state => state?.ecom?.products))
   const cart = useSelector((state => state?.ecom?.Cart))
 
@@ -14,11 +16,11 @@ const Home = () => {
     dispatch(setProducts(productData.products))
   }, [productData])
 
-  const getTotalCartPrice = () => {
-    return cart.reduce((total, item) => {
-      return total + (item.price * item.quantity)
-    }, 0)
-  };
+  // const getTotalCartPrice = () => {
+  //   return cart.reduce((total, item) => {
+  //     return total + (item.price * item.quantity)
+  //   }, 0)
+  // };
 
 
   return (
@@ -38,7 +40,7 @@ const Home = () => {
         <table className='w-full'>
           <tr>
             <th className='text-right w-[85%]'>Total Price:</th>
-            <td className='text-right w-[15%]'>{getTotalCartPrice()}</td>
+            <td className='text-right w-[15%]'>{'500'}</td>
           </tr>
           <tr>
             <th className='w-1/2'></th>
