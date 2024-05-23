@@ -21,7 +21,6 @@ const Products = () => {
 
   const getTotalCartPrice = () => {
     return cart.reduce((total, item) => {
-      console.log(item)
       return total + (item.totalPrice * item.quantity)
     }, 0)
   };

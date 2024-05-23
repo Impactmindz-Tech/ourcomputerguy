@@ -12,19 +12,37 @@ const Home = () => {
   const { data: Products, isError } = useProductsQuery(getLocalStorage('user').unique_id)
   const allProducts = useSelector((state => state?.ecom?.products))
   const cart = useSelector((state => state?.ecom?.Cart))
+  const [productsDetails, setProductsDetails] = useState([])
 
   useEffect(() => {
-    if(Products?.status){
+    if (Products?.status) {
       dispatch(setProducts(Products))
     }
   }, [Products])
 
   const getTotalCartPrice = () => {
     return cart.reduce((total, item) => {
-      console.log(item)
       return total + (item.totalPrice * item.quantity)
     }, 0)
   };
+
+  useEffect(() => {
+    if (cart) {
+      const details = cart.map((item) => {
+        return {
+          productId: item.product_id,
+          quantity: item.quantity,
+          totalPrice: item.totalPrice,
+        }
+      });
+      setProductsDetails(details)
+      console.log(productsDetails)
+    }
+  }, [cart]);
+
+  const orderNow = () => {
+
+  }
 
 
   return (
@@ -50,7 +68,7 @@ const Home = () => {
             <tr>
               <th className='w-1/2'></th>
               <td className='w-1/2 text-right'>
-                <button type="submit" className="main_btn mt-14 bg-blue-900 text-white text-xs font-semibold px-12 py-3 rounded-lg">
+                <button onClick={orderNow} type="submit" className="main_btn mt-14 bg-blue-900 text-white text-xs font-semibold px-12 py-3 rounded-lg">
                   Order Now
                 </button>
               </td>
