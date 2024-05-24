@@ -34,10 +34,10 @@ const Login = () => {
             <h4 className="2xl:text-base font-semibold text-xs">Welcome back!</h4>
             <p className="text-[12px] 2xl:text-base text-input-placeholder">Please enter your email and password to sign in</p>
             <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)} noValidate>
-                <div className="2xl:p-4 border border-input-placeholder border-[#000E2F70] flex items-center gap-x-2 rounded-xl p-3 relative mt-2">
+                {/* <div className="2xl:p-4 border border-input-placeholder border-[#000E2F70] flex items-center gap-x-2 rounded-xl p-3 relative mt-2">
                     <label className="2xl:text-sm absolute bg-white text-input-label -top-2 left-5 text-[11px] px-1" htmlFor="email">Email</label>
                     <input placeholder="michellejohnson125@gmail.com" className="w-full outline-none text-[12px] text-input-placeholder" type="email" id="email" {...register('email')} />
-                </div>
+                </div> */}
                 <p className='text-[red]'>{errors?.email?.message}</p>
                 <div className="2xl:p-4 border border-input-placeholder border-[#000E2F70] flex gap-x-2 rounded-xl p-3 relative mt-4">
                     <label className="2xl:text-sm absolute bg-white text-input-label -top-2 left-5 text-[11px] px-1" htmlFor="password">Password</label>
