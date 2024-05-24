@@ -6,6 +6,7 @@ import { profileValidation } from '../../utils/validation/Validation'
 import { useLoginApiMutation } from '../../store/service/AuthService';
 import { setLocalStorage } from '../../utils/LocalStorageUtills';
 import ClipLoader from "react-spinners/ClipLoader";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
     const [formData] = useLoginApiMutation()
@@ -17,8 +18,12 @@ const Login = () => {
             const responce = await formData(data)
             if (responce?.data?.status) {
                 console.log(responce)
+                console.log(responce)
                 setLocalStorage('user', responce?.data?.user_data)
+                setLocalStorage('message', responce?.data?.message)
                 navigate('/user/dashboard')
+            } else {
+                toast.error(responce?.error?.data?.message)
             }
         } catch (error) {
             console.log(error)
@@ -32,7 +37,7 @@ const Login = () => {
         <div className='2xl:max-w-[335px] w-full max-w-[270px] mx-auto h-full flex flex-col gap-2'>
             <h2 className="font-bold text-base heading">Log In</h2>
             <h4 className="2xl:text-base font-semibold text-xs">Welcome back!</h4>
-            <p className="text-[12px] 2xl:text-base text-input-placeholder">Please enter your email and password to sign in</p>
+            <p className="text-[12px] 2xl:text-base text-input-placeholder">Please enter your Unique password to sign in</p>
             <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)} noValidate>
                 {/* <div className="2xl:p-4 border border-input-placeholder border-[#000E2F70] flex items-center gap-x-2 rounded-xl p-3 relative mt-2">
                     <label className="2xl:text-sm absolute bg-white text-input-label -top-2 left-5 text-[11px] px-1" htmlFor="email">Email</label>
@@ -52,6 +57,7 @@ const Login = () => {
                     </div>
                 </button>
             </form>
+            <Toaster />
             {/* <div className='mt-5'>
                 <div className='flex items-center'>
                     <span className='w-[28%] h-[1px] bg-blue-900'></span>
