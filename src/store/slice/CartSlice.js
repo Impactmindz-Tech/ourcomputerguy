@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getLocalStorage, setLocalStorage } from "../../utils/LocalStorageUtills";
 
 const initialState = {
-    Cart: [],
+    Cart: getLocalStorage('cart') || [],
     products: []
 };
 
@@ -23,6 +24,7 @@ const CartSlice = createSlice({
             } else {
                 state.Cart.push({ ...action.payload, quantity: 1, totalPrice: action.payload.product_price });
             }
+            setLocalStorage('cart', state.Cart)
         },
         removeFromCart: (state, action) => {
             const existingProduct = state.Cart.find(item => item.product_id === action.payload.product_id);
@@ -32,9 +34,11 @@ const CartSlice = createSlice({
             } else {
                 state.Cart = state.Cart.filter(item => item.product_id !== action.payload.product_id);
             }
+            setLocalStorage('cart', state.Cart)
         },
         removeItemFromCart: (state, action) => {
             state.Cart = state.Cart.filter(item => item.product_id !== action.payload.product_id);
+            setLocalStorage('cart', state.Cart)
         }
     }
 });

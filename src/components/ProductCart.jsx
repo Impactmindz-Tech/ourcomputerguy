@@ -23,9 +23,9 @@ const ProductCart = ({ item }) => {
         dispatch(removeFromCart(item));
     };
 
-    const handleRemoveCart = () => {
-        dispatch(removeItemFromCart(item));
-    };
+        const handleRemoveCart = () => {
+            dispatch(removeItemFromCart(item));
+        };
 
     const getItemDetails = () => {
         return cart.find(cartItem => cartItem.product_id === item.product_id) || { quantity: 0, totalPrice: 0 };
@@ -43,7 +43,7 @@ const ProductCart = ({ item }) => {
             <img className='w-full h-[100px] object-contain' src={item.product_image} alt={item.caption} />
             <div className='pt-8'>
                 <h2 className='text-center'>{item.product_name}</h2>
-                <p className='font-semibold text-center'>₹ {totalPrice ? totalPrice : item.product_price}</p>
+                <p className='font-semibold text-center'>{item.currency} {totalPrice ? totalPrice : item.product_price}</p>
                 <div className='flex justify-center gap-10 mt-3' onClick={(e) => e.stopPropagation()}>
                     <RemoveCircleIcon sx={{ color: isSelected ? '#212121' : '#646ea6' }} onClick={() => handleRemoveProduct()} />
                     <div>{quantity}</div>

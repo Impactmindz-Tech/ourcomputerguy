@@ -6,13 +6,14 @@ import SignUp from '../pages/auth/SignUp'
 import WithAuthLayout from '../layout/AuthLayout'
 import HomeLayout from '../layout/HomeLayout'
 import MyOrder from '../pages/dashboard/MyOrder'
-import MyOrderList from '../pages/dashboard/MyOrderList'
 import MyProfile from '../pages/dashboard/MyProfile'
 import ProfileLayout from '../layout/ProfileLayout'
 import Products from '../pages/dashboard/Products'
 import { getLocalStorage } from '../utils/LocalStorageUtills'
 import AuthProteced from '../authentication/AuthProteced'
 import DashboardProtected from '../authentication/DashboardProtected'
+import ThankYouPage from '../pages/dashboard/ThankYouPage'
+import ViewOrders from '../pages/dashboard/ViewOrders'
 
 const Root = () => {
     const navigate = useNavigate();
@@ -41,7 +42,8 @@ const Routing = () => {
                     <Route path='myprofile' element={<ProfileLayout><MyProfile /></ProfileLayout>} />
                     <Route path='myorder' element={<HomeLayout><MyOrder /></HomeLayout>} />
                     <Route path='products' element={<HomeLayout><Products /></HomeLayout>} />
-                    <Route path='myorder/:id' element={<HomeLayout><MyOrderList /></HomeLayout>} />
+                    <Route path='myorder/:id' element={<HomeLayout><ViewOrders /></HomeLayout>} />
+                    <Route path='thankupage' element={<HomeLayout><ThankYouPage /></HomeLayout>} />
                 </Route>
             </Routes>
         </BrowserRouter>

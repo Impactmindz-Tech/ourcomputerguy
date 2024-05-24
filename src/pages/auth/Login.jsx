@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, redirect, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 import { profileValidation } from '../../utils/validation/Validation'
@@ -12,15 +12,14 @@ const Login = () => {
     const [formData] = useLoginApiMutation()
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
+
     const onSubmit = async (data) => {
         setLoading(true)
         try {
             const responce = await formData(data)
             if (responce?.data?.status) {
-                console.log(responce)
-                console.log(responce)
+                toast.success('responce?.data?.message')
                 setLocalStorage('user', responce?.data?.user_data)
-                setLocalStorage('message', responce?.data?.message)
                 navigate('/user/dashboard')
             } else {
                 toast.error(responce?.error?.data?.message)

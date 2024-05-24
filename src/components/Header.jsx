@@ -50,7 +50,7 @@ const Header = () => {
                         >
                             <Link to='/user/myprofile'><MenuItem onClick={handleClose}>My Profile</MenuItem></Link>
                             <Link to='/user/myorder'><MenuItem onClick={handleClose}>My Order</MenuItem></Link>
-                            <MenuItem>Product Request</MenuItem>
+                            {/* <MenuItem>Product Request</MenuItem> */}
                             <Link to='/'><MenuItem onClick={logOut}>Logout</MenuItem></Link>
                         </Menu>
                     </div>
