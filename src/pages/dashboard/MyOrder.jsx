@@ -1,19 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import orderList from '../../constant/myorder'
 import { Link } from 'react-router-dom'
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { useMyOrderQuery } from '../../store/service/MyOrdersService';
 import { getLocalStorage } from '../../utils/LocalStorageUtills';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProducts } from '../../store/slice/CartSlice';
 
 const MyOrder = () => {
   const UserUniqId = getLocalStorage('user').unique_id
   const { data: myOrder } = useMyOrderQuery(UserUniqId)
+  const dispatch = useDispatch()
+  const myOrderProduct = useSelector((state) => state?.ecom?.products?.data)
+
+  useEffect(() => {
+    if (myOrder) {
+      dispatch(setProducts(myOrder))
+    }
+  }, [myOrder])
 
   return (
     <div className="container">
       <h1 className='py-5'>My Order</h1>
-      {myOrder?.status && myOrder?.data?.map((item, index) => (
+      {myOrder?.status && myOrderProduct?.map((item, index) => (
         <div key={index} className='bg-white mb-3 p-6 flex items-center justify-between border-[#e0e0e0] border'>
           <div className='flex gap-5'>
             <ShoppingCartIcon sx={{ fontSize: '40px' }} />

@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useViewOrdersQuery } from '../../store/service/MyOrdersService'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useOrderMutation } from '../../store/service/HomeService'
+import { getLocalStorage } from '../../utils/LocalStorageUtills'
+import { Skeleton } from '@mui/material'
 
 const ViewOrders = () => {
   const params = useParams()
-  const { data: viewOrder } = useViewOrdersQuery(params)
+  const navigate = useNavigate()
+  const { data: viewOrder, isLoading } = useViewOrdersQuery(params.id)
+  const [productsDetails, setProductsDetails] = useState([])
+  const [loading, setLoading] = useState(false);
   const [grandTotal, setGrandTotal] = useState(0);
-
+  const [repeatOrder] = useOrderMutation()
   useEffect(() => {
     if (viewOrder?.status && viewOrder?.data) {
       const total = viewOrder.data.reduce((accumulator, item) => {
@@ -14,11 +20,46 @@ const ViewOrders = () => {
       }, 0);
       setGrandTotal(total);
     }
+    if (viewOrder) {
+      const details = viewOrder?.data.map((item) => {
+        return {
+          productId: item.product_id,
+          quantity: item.orderedQty,
+          totalPrice: item.total_amount,
+        }
+      });
+      setProductsDetails(details)
+      console.log(productsDetails)
+    }
   }, [viewOrder]);
+
+  const orderNow = async () => {
+    setLoading(true);
+
+    try {
+      const id = getLocalStorage('user').unique_id
+      const responce = await repeatOrder({ id, productsDetails })
+      console.log(responce)
+      if (responce?.data.status) {
+        navigate('/user/thankupage')
+        return setLoading(false);
+      }
+    } catch (error) {
+      console.log(error)
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="container">
-      <h1 className='py-5'>My Order</h1>
+      <div className='flex justify-between items-center'>
+        <h1 className='py-5'>My Order</h1>
+        <button onClick={orderNow} type="submit" className="text-center bg-blue-900 text-white text-xs font-semibold px-3 py-1 rounded-lg">
+          Reorder
+        </button>
+      </div>
       <div className='bg-white'>
         <div className='pt-5'>
           <table className='w-full'>
@@ -32,18 +73,33 @@ const ViewOrders = () => {
                 <th className='text-left border-b border-[#ccc] pb-4 px-6'>Total</th>
               </tr>
             </thead>
-            <tbody>
-              {viewOrder?.status && viewOrder?.data?.map((item, index) => (
-                <tr key={index}>
-                  <td className='border-b border-[#ccc] py-4 px-6'>{index + 1}</td>
-                  <td className='border-b border-[#ccc] py-4 px-6'>{item.sku}</td>
-                  <td className='border-b border-[#ccc] py-4 px-6'>{item.product_name}</td>
-                  <td className='border-b border-[#ccc] py-4 px-6'>{item.orderedQty}</td>
-                  <td className='border-b border-[#ccc] py-4 px-6'>{item.currency} {item.product_price}</td>
-                  <td className='border-b border-[#ccc] py-4 px-6'>{item.currency} {item.total_amount}</td>
-                </tr>
-              ))}
-            </tbody>
+            {isLoading ?
+              <>
+                {[...Array(4)].map((_, index) => (
+                  <tr>
+                    <td><Skeleton width='90%' sx={{ padding: '16px 16px' }} /></td>
+                    <td><Skeleton width='90%' sx={{ padding: '16px 16px' }} /></td>
+                    <td><Skeleton width='90%' sx={{ padding: '16px 16px' }} /></td>
+                    <td><Skeleton width='90%' sx={{ padding: '16px 16px' }} /></td>
+                    <td><Skeleton width='90%' sx={{ padding: '16px 16px' }} /></td>
+                    <td><Skeleton width='90%' sx={{ padding: '16px 16px' }} /></td>
+                  </tr>
+                ))}
+              </>
+
+              :
+              <tbody>
+                {viewOrder?.status && viewOrder?.data?.map((item, index) => (
+                  <tr key={index}>
+                    <td className='border-b border-[#ccc] py-4 px-6'>{index + 1}</td>
+                    <td className='border-b border-[#ccc] py-4 px-6'>{item.sku}</td>
+                    <td className='border-b border-[#ccc] py-4 px-6'>{item.product_name}</td>
+                    <td className='border-b border-[#ccc] py-4 px-6'>{item.orderedQty}</td>
+                    <td className='border-b border-[#ccc] py-4 px-6'>{item.currency} {item.product_price}</td>
+                    <td className='border-b border-[#ccc] py-4 px-6'>{item.currency} {item.total_amount}</td>
+                  </tr>
+                ))}
+              </tbody>}
           </table>
         </div>
       </div>

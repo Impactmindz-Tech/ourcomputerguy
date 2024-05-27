@@ -4,10 +4,12 @@ import { baseApi } from "../../utils/FetchBaseQuery";
 const MyOrdersService = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         viewOrders: builder.query({
-            query: () => (`/Order_details/21`),
+            query: (id) => (`/Order_details/${id}`),
+            providesTags: ['Products'],
         }),
         myOrder: builder.query({
             query: (id) => (`/my_orders/${id}`),
+            providesTags: ['Products'],
         }),
     }),
 });

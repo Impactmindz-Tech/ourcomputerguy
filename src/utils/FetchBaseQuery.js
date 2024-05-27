@@ -26,6 +26,6 @@ const baseQueryInterceptor = async (args, api, options) => {
 export const baseApi = createApi({
     reducerPath: "api",
     baseQuery: baseQueryInterceptor,
-    // tagTypes: ["home", "Products"],
+    tagTypes: ["Products"],
     endpoints: () => ({}),
 });

@@ -7,11 +7,12 @@ const HomeService = baseApi.injectEndpoints({
             query: (id) => (`/assigned_product/${id}`),
         }),
         order: builder.mutation({
-            query: (id, orderData) => ({
-                url: `order/${id}`,
+            query: (payload) => ({
+                url: `order/${payload.id}`,
                 method: 'POST',
-                body: orderData
+                body: payload.productsDetails
             }),
+            invalidatesTags: ['Products'],
         }),
     }),
 });

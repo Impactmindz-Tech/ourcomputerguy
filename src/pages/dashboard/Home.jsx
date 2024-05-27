@@ -17,7 +17,7 @@ const Home = () => {
   const cart = useSelector((state => state?.ecom?.Cart))
   const [productsDetails, setProductsDetails] = useState([])
   const [orderData] = useOrderMutation()
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [loading, setLoading] = useState(false);
   const [confirmation, setConfirmation] = React.useState(false);
   const navigate = useNavigate()
 
@@ -34,9 +34,10 @@ const Home = () => {
 
   const getTotalCartPrice = () => {
     return cart.reduce((total, item) => {
-      return total + (item.totalPrice * item.quantity)
+      return total + (item.product_price * item.quantity)
     }, 0)
   };
+
 
   useEffect(() => {
     if (cart) {
@@ -53,42 +54,21 @@ const Home = () => {
 
   const orderNow = async () => {
     setLoading(true);
-    const payload = JSON.stringify(productsDetails);
-    const id = getLocalStorage('user').unique_id
     try {
-      const response = await fetch(`https://impactmindz.in/client/artie/back_end/api/order/${id}`, {
-        method: 'POST',
-        body: payload,
-      });
-      const responseData = await response.json();
-      if (responseData?.status) {
-        console.log(responseData, 'tt')
+      const id = getLocalStorage('user').unique_id
+      const responce = await orderData({ id, productsDetails })
+      console.log(responce)
+      if (responce?.data.status) {
+        dispatch(setCart([]));
         navigate('/user/thankupage')
+        return setLoading(false);
       }
-      setLoading(false);
     } catch (error) {
       console.log(error)
-      setLoading(false); // Set loading to false on error
+      setLoading(false);
+    } finally {
+      setLoading(false);
     }
-    dispatch(setCart([]));
-    // const id = getLocalStorage('user').unique_id
-    // let details
-    // if (cart) {
-    //   details = cart.map((item) => {
-    //     return {
-    //       productId: item.product_id,
-    //       quantity: item.quantity,
-    //       totalPrice: item.totalPrice,
-    //     }
-    //   });
-    //   setProductsDetails(details)
-    // }
-    // try {
-    //   const responce = await orderData(id, details)
-    //   console.log(responce)
-    // } catch (error) {
-    //   console.log(error)
-    // }
   }
 
 
