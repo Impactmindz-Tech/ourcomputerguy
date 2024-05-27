@@ -9,10 +9,11 @@ import { getLocalStorage } from '../../utils/LocalStorageUtills';
 import { Toaster } from 'react-hot-toast';
 import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from 'react-router-dom';
+import { Skeleton } from '@mui/material';
 
 const Home = () => {
   const dispatch = useDispatch()
-  const { data: Products, isError } = useProductsQuery(getLocalStorage('user').unique_id)
+  const { data: Products, isError, isLoading } = useProductsQuery(getLocalStorage('user').unique_id)
   const allProducts = useSelector((state => state?.ecom?.products))
   const cart = useSelector((state => state?.ecom?.Cart))
   const [productsDetails, setProductsDetails] = useState([])
@@ -71,6 +72,15 @@ const Home = () => {
     }
   }
 
+  const renderSkeletons = () => {
+    return Array.from({ length: 10 }).map((_, index) => (
+      <div key={index} className="border cursor-pointer p-4 rounded-md border-[#e0e0e0] relative">
+        <Skeleton height={100} />
+        <Skeleton count={2} style={{ marginTop: '10px' }} />
+      </div>
+    ));
+  };
+
 
   return (
     <div className="container">
@@ -78,7 +88,7 @@ const Home = () => {
       <div className='bg-white my-8 p-6'>
         <h1>Products</h1>
         <div className='grid grid-cols-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pt-5'>
-          {allProducts?.data?.map((product, index) => (
+          {isLoading ? renderSkeletons() : allProducts?.data?.map((product, index) => (
             <ProductCart
               key={index}
               item={product}
