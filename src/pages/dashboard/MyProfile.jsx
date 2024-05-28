@@ -1,6 +1,20 @@
-import React from 'react'
+import { yupResolver } from '@hookform/resolvers/yup';
+import React, { useEffect } from 'react'
+import { useForm } from 'react-hook-form';
+import { getLocalStorage } from '../../utils/LocalStorageUtills';
+
 
 const MyProfile = () => {
+    const { register, handleSubmit, setValue, formState: { errors }, } = useForm();
+
+    useEffect(() => {
+        const userData = getLocalStorage('user');
+            console.log('User data:', userData); 
+            setValue('firstname', userData.name);
+            setValue('email', userData.email);
+    }, [setValue]);
+    
+
     return (
         <div className="container">
             <div className='bg-white p-6'>
@@ -9,7 +23,7 @@ const MyProfile = () => {
                     <div className='flex gap-4 flex-wrap'>
                         <div className="2xl:p-4 border border-input-placeholder border-[#000E2F70] flex items-center gap-x-2 rounded-xl p-3 relative mt-2 w-[49%]">
                             <label className="2xl:text-sm absolute bg-white text-input-label -top-2 left-5 text-[11px] px-1" htmlFor="firstname">First Name</label>
-                            <input placeholder="First Name" className="w-full outline-none text-[12px] text-input-placeholder" type="text" id="firstname" name='firstname' />
+                            <input placeholder="First Name" className="w-full outline-none text-[12px] text-input-placeholder" type="text" id="firstname" name='firstname' {...register('firstname')} />
                         </div>
                         <div className="2xl:p-4 border border-input-placeholder border-[#000E2F70] flex items-center gap-x-2 rounded-xl p-3 relative mt-2 w-[49%]">
                             <label className="2xl:text-sm absolute bg-white text-input-label -top-2 left-5 text-[11px] px-1" htmlFor="lastname">Last Name</label>
@@ -17,7 +31,7 @@ const MyProfile = () => {
                         </div>
                         <div className="2xl:p-4 border border-input-placeholder border-[#000E2F70] flex items-center gap-x-2 rounded-xl p-3 relative mt-2 w-[49%]">
                             <label className="2xl:text-sm absolute bg-white text-input-label -top-2 left-5 text-[11px] px-1" htmlFor="email">Email</label>
-                            <input placeholder="michellejohnson125@gmail.com" className="w-full outline-none text-[12px] text-input-placeholder" type="email" id="email" />
+                            <input placeholder="michellejohnson125@gmail.com" className="w-full outline-none text-[12px] text-input-placeholder" type="email" id="email" {...register('email')} />
                         </div>
                         <div className="2xl:p-4 border border-input-placeholder border-[#000E2F70] flex items-center gap-x-2 rounded-xl p-3 relative mt-2 w-[49%]">
                             <label className="2xl:text-sm absolute bg-white text-input-label -top-2 left-5 text-[11px] px-1" htmlFor="mobile">Mobile</label>
