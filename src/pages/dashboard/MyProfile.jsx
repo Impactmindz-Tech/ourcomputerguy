@@ -41,10 +41,10 @@ const MyProfile = () => {
                     {/* <div className='text-center border py-2  border-[#000E2F70] rounded-xl'>
                         <input className="w-full outline-none text-[12px] text-input-placeholder" type="submit" />
                     </div> */}
-                    <button type="submit" className="main_btn mt-3 bg-blue-900 text-white text-xs font-semibold px-12 py-3 rounded-lg flex items-center gap-x-2">
+                    {/* <button type="submit" className="main_btn mt-3 bg-blue-900 text-white text-xs font-semibold px-12 py-3 rounded-lg flex items-center gap-x-2">
                         <span className='w-full'>Update Profile
                         </span>
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>
