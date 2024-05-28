@@ -29,35 +29,36 @@ const ViewOrders = () => {
         }
       });
       setProductsDetails(details)
-      console.log(productsDetails)
     }
   }, [viewOrder]);
 
   const orderNow = async () => {
+    if (!window.confirm('Confirm this order?')) return;
     setLoading(true);
-
     try {
-      const id = getLocalStorage('user').unique_id
-      const responce = await repeatOrder({ id, productsDetails })
-      console.log(responce)
-      if (responce?.data.status) {
-        navigate('/user/thankupage')
-        return setLoading(false);
+      const userId = getLocalStorage('user').unique_id;
+      const response = await repeatOrder({ id: userId, productsDetails });
+      if (response?.data.status) {
+        navigate('/user/thankupage');
       }
     } catch (error) {
-      console.log(error)
-      setLoading(false);
+      console.error(error);
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="container">
-      <div className='flex justify-between items-center'>
-        <h1 className='py-5'>My Order</h1>
-        <button onClick={orderNow} type="submit" className="text-center bg-blue-900 text-white text-xs font-semibold px-3 py-1 rounded-lg">
-          Reorder
+      <div className="flex justify-between items-center">
+        <h1 className="py-5">My Order</h1>
+        <button
+          onClick={orderNow}
+          type="button"
+          className="text-center bg-blue-900 text-white text-xs font-semibold px-3 py-1 rounded-lg"
+          disabled={loading}
+        >
+          {loading ? 'Loading...' : 'Reorder'}
         </button>
       </div>
       <div className='bg-white'>
