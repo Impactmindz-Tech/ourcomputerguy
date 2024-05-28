@@ -60,6 +60,7 @@ const Home = () => {
       const responce = await orderData({ id, productsDetails })
       console.log(responce)
       if (responce?.data.status) {
+        localStorage.removeItem('cart')
         dispatch(setCart([]));
         navigate('/user/thankupage')
         return setLoading(false);
