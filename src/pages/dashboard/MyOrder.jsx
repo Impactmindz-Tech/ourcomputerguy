@@ -12,10 +12,9 @@ const MyOrder = () => {
   const UserUniqId = getLocalStorage('user').unique_id;
   const { data: myOrder } = useMyOrderQuery(UserUniqId);
   const dispatch = useDispatch();
-  const myOrderProduct = useSelector((state) => state?.ecom?.products?.data);
-
+  const myOrderProduct = useSelector((state) => state?.ecom?.products?.data)
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(5); // Default items per page
+  const [itemsPerPage, setItemsPerPage] = useState(5);
 
   useEffect(() => {
     if (myOrder) {
@@ -37,43 +36,45 @@ const MyOrder = () => {
   };
 
   return (
-    <div className="container">
-      <h1 className="py-5">My Order</h1>
-      {currentItems?.map((item, index) => (
-        <div key={index} className="bg-white mb-3 p-6 flex items-center justify-between border-[#e0e0e0] border">
-          <div className="flex gap-5">
-            <ShoppingCartIcon sx={{ fontSize: '40px' }} />
-            <div>
-              <h2>Order Id: {item.order_id}</h2>
-              <p className="pt-1">SKU: {item.sku}</p>
-              <h2>
-                {item.currency} {item.totalAmount}
-              </h2>
+    <main className='mb-20'>
+      <div className="container">
+        <h1 className="py-5">My Order</h1>
+        {currentItems?.map((item, index) => (
+          <div key={index} className="bg-white mb-3 p-6 flex items-center justify-between border-[#e0e0e0] border">
+            <div className="flex gap-5">
+              <ShoppingCartIcon sx={{ fontSize: '40px' }} />
+              <div>
+                <h2>Order Id: {item.order_id}</h2>
+                <p className="pt-1">SKU: {item.sku}</p>
+                <h2>
+                  {item.currency} {item.totalAmount}
+                </h2>
+              </div>
+            </div>
+            <div className="text-center">
+              <h2 className="font-semibold">Products This Order</h2>
+              <h2 className="pt-2">{item.totalProducts}</h2>
+            </div>
+            <div className="text-center">
+              <h2 className="font-semibold">Status</h2>
+              <h2 className="font-semibold">{item.status}</h2>
+              <div className="text-center mt-3 gap-6 flex items-center justify-center">
+                <Link to={`${item.order_id}`}>
+                  <RemoveRedEyeIcon sx={{ color: '#646ea6' }} />
+                </Link>
+              </div>
             </div>
           </div>
-          <div className="text-center">
-            <h2 className="font-semibold">Products This Order</h2>
-            <h2 className="pt-2">{item.totalProducts}</h2>
-          </div>
-          <div className="text-center">
-            <h2 className="font-semibold">Status</h2>
-            <h2 className="font-semibold">{item.status}</h2>
-            <div className="text-center mt-3 gap-6 flex items-center justify-center">
-              <Link to={`${item.order_id}`}>
-                <RemoveRedEyeIcon sx={{ color: '#646ea6' }} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      ))}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={onPageChange}
-        itemsPerPage={itemsPerPage}
-        handleItemsPerPageChange={handleItemsPerPageChange}
-      />
-    </div>
+        ))}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={onPageChange}
+          itemsPerPage={itemsPerPage}
+          handleItemsPerPageChange={handleItemsPerPageChange}
+        />
+      </div>
+    </main>
   );
 };
 

@@ -16,7 +16,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, itemsPerPage, handl
     };
 
     return (
-        <div className="pagination items-center bg-white p-4 fixed w-full left-0">
+        <div className="pagination items-center bg-white p-4 fixed w-full left-0 bottom-0">
             <div className="flex items-center justify-center gap-2">
                 <button onClick={goToPreviousPage} disabled={currentPage === 1}>
                     <KeyboardArrowLeftIcon />
@@ -28,7 +28,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, itemsPerPage, handl
                     <KeyboardArrowRightIcon />
                 </button>
             </div>
-            <div className="items-per-page absolute right-0 top-4">
+            <div className="items-per-page absolute right-52 top-4">
                 <label htmlFor="itemsPerPage" className="mr-2">Items per page:</label>
                 <select id="itemsPerPage" value={itemsPerPage} onChange={handleItemsPerPageChange} className="border rounded p-1">
                     <option value={5}>5</option>
