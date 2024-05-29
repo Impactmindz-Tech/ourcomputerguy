@@ -58,6 +58,8 @@ const ViewOrders = () => {
     }
   };
 
+
+
   return (
     <div className="container">
       <div className="flex justify-between items-center">
@@ -72,8 +74,8 @@ const ViewOrders = () => {
         </button>
       </div>
       <div className='bg-white'>
-        <div className='pt-5 overflow-auto'>
-          <table className='w-full'>
+        <div className=' overflow-auto'>
+          <table className=''>
             <thead>
               <tr>
                 <th className='text-left border-b border-[#ccc] pb-4 px-6'>Sr No.</th>
@@ -99,21 +101,24 @@ const ViewOrders = () => {
               </tbody>
               :
               <tbody>
-                {viewOrder?.status && id == getLocalStorage('user').unique_id && viewOrder?.data?.map((item, index) => (
+                {viewOrder?.status && id[0] == getLocalStorage('user').unique_id && viewOrder?.data?.map((item, index) => (
                   <tr key={index}>
-                    <td className='border-b border-[#ccc] py-4 px-6'>{index + 1}</td>
-                    <td className='border-b border-[#ccc] py-4 px-6'>{item.sku}</td>
-                    <td className='border-b border-[#ccc] py-4 px-6'>{item.product_name}</td>
-                    <td className='border-b border-[#ccc] py-4 px-6'>{item.orderedQty}</td>
-                    <td className='border-b border-[#ccc] py-4 px-6'>{item.currency} {item.product_price}</td>
-                    <td className='border-b border-[#ccc] py-4 px-6'>{item.currency} {item.total_amount}</td>
+                    <td className='title border-b border-[#ccc] py-4 px-6'>{index + 1}</td>
+                    <td data-label="Rank" className='title border-b border-[#ccc] py-4 px-6'>{item.sku}</td>
+                    <td data-label="Rank" className='title border-b border-[#ccc] py-4 px-6'>{item.product_name}</td>
+                    <td data-label="Rank" className='title border-b border-[#ccc] py-4 px-6'>{item.orderedQty}</td>
+                    <td data-label="Rank" className='title border-b border-[#ccc] py-4 px-6'>{item.currency} {item.product_price}</td>
+                    <td data-label="Rank" className='title border-b border-[#ccc] py-4 px-6'>{item.currency} {item.total_amount}</td>
                   </tr>
                 ))}
               </tbody>}
+            {viewOrder?.data?.length < 0 && (
+              <p>no data found</p>
+            )}
           </table>
         </div>
       </div>
-      {id == getLocalStorage('user').unique_id && <div className='bg-black-200 text-white py-10 pe-20 sm:pe-10'>
+      {id == getLocalStorage('user').unique_id && <div className='bg-[#646ea6] text-white py-10 pe-20 sm:pe-10'>
         <div className='max-w-sm ml-auto flex justify-between items-center'>
           <h1 className='sm:text-xl'>Grand Total Price:-</h1>
           <p className='text-4xl sm:text-xl'>{viewOrder?.data[0].currency}{grandTotal}</p>
