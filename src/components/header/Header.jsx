@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
-import Images from '../constant/Images'
+import Images from '../../constant/Images'
 import { Button, Menu, MenuItem } from '@mui/material'
 import { Link } from 'react-router-dom';
+import MenuIcon from '@mui/icons-material/Menu';
+import SidebarHeader from './SidebarHeader';
 
 const Header = () => {
     const [anchorEl, setAnchorEl] = useState(null);
+    const [headerOpen, setHeaderOpen] = useState(false);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -16,20 +19,23 @@ const Header = () => {
         localStorage.clear()
     };
     return (
-        <header className='bg-white py-5 sm:hidden'>
+        <header className='bg-white py-5'>
             <div className="container">
                 <div className='flex items-center justify-between' >
                     <div className='flex items-center gap-4'>
                         <img src={Images.Logo_img} alt="logo" />
                     </div>
-                    <nav>
+                    <div className='sm:block cursor-pointer hidden' onClick={()=>setHeaderOpen(true)}>
+                        <MenuIcon/>
+                    </div>
+                    <nav className='sm:hidden'>
                         <ul className='flex gap-10'>
                             <Link to='/user/dashboard'><MenuItem>Home</MenuItem></Link>
                             <Link to='/user/products'><MenuItem>Products</MenuItem></Link>
                             <Link to='/user/myorder'><MenuItem>My Order</MenuItem></Link>
                         </ul>
                     </nav>
-                    <div>
+                    <div className='sm:hidden'>
                         <Button
                             id="basic-button"
                             aria-controls={open ? 'basic-menu' : undefined}
@@ -56,6 +62,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
+            <SidebarHeader headerOpen={headerOpen} setHeaderOpen={setHeaderOpen}/>
         </header>
     )
 }

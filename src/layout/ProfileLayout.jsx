@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from '../components/Header'
 import { Link } from 'react-router-dom'
 import { getLocalStorage } from '../utils/LocalStorageUtills'
+import Header from '../components/header/Header'
 
 const ProfileLayout = ({ children }) => {
     return (

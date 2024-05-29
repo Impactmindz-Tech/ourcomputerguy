@@ -11,8 +11,18 @@ const ViewOrders = () => {
   const { data: viewOrder, isLoading } = useViewOrdersQuery(params.id)
   const [productsDetails, setProductsDetails] = useState([])
   const [loading, setLoading] = useState(false);
+  const [id, setId] = useState('');
   const [grandTotal, setGrandTotal] = useState(0);
   const [repeatOrder] = useOrderMutation()
+
+  useEffect(() => {
+    if (viewOrder && viewOrder.data) {
+      const userIds = viewOrder.data.map((item) => item.user_unique_id);
+      setId(userIds);
+    }
+  }, [viewOrder, setId]);
+  
+
   useEffect(() => {
     if (viewOrder?.status && viewOrder?.data) {
       const total = viewOrder.data.reduce((accumulator, item) => {
@@ -75,9 +85,9 @@ const ViewOrders = () => {
               </tr>
             </thead>
             {isLoading ?
-              <>
+              <tbody>
                 {[...Array(4)].map((_, index) => (
-                  <tr>
+                  <tr key={index}>
                     <td><Skeleton width='90%' sx={{ padding: '16px 16px' }} /></td>
                     <td><Skeleton width='90%' sx={{ padding: '16px 16px' }} /></td>
                     <td><Skeleton width='90%' sx={{ padding: '16px 16px' }} /></td>
@@ -86,11 +96,10 @@ const ViewOrders = () => {
                     <td><Skeleton width='90%' sx={{ padding: '16px 16px' }} /></td>
                   </tr>
                 ))}
-              </>
-
+              </tbody>
               :
               <tbody>
-                {viewOrder?.status && viewOrder?.data?.map((item, index) => (
+                {viewOrder?.status && id == getLocalStorage('user').unique_id && viewOrder?.data?.map((item, index) => (
                   <tr key={index}>
                     <td className='border-b border-[#ccc] py-4 px-6'>{index + 1}</td>
                     <td className='border-b border-[#ccc] py-4 px-6'>{item.sku}</td>
