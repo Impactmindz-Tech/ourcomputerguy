@@ -113,12 +113,12 @@ const ViewOrders = () => {
           </table>
         </div>
       </div>
-      <div className='bg-black-200 text-white py-10 pe-20'>
+      {id == getLocalStorage('user').unique_id &&<div className='bg-black-200 text-white py-10 pe-20'>
         <div className='max-w-sm ml-auto flex justify-between items-center'>
           <h1>Grand Total Price:-</h1>
           <p className='text-4xl'>{viewOrder?.data[0].currency}{grandTotal}</p>
         </div>
-      </div>
+      </div>}
     </div>
   )
 }
