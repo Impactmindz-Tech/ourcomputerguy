@@ -6,7 +6,7 @@ import { profileValidation } from '../../utils/validation/Validation'
 import { useLoginApiMutation } from '../../store/service/AuthService';
 import { setLocalStorage } from '../../utils/LocalStorageUtills';
 import ClipLoader from "react-spinners/ClipLoader";
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const [formData] = useLoginApiMutation()
@@ -18,7 +18,7 @@ const Login = () => {
         try {
             const responce = await formData(data)
             if (responce?.data?.status) {
-                toast.success('responce?.data?.message')
+                toast.success(responce?.data?.message)
                 setLocalStorage('user', responce?.data?.user_data)
                 navigate('/user/dashboard')
             } else {
@@ -56,7 +56,6 @@ const Login = () => {
                     </div>
                 </button>
             </form>
-            <Toaster />
             {/* <div className='mt-5'>
                 <div className='flex items-center'>
                     <span className='w-[28%] h-[1px] bg-blue-900'></span>

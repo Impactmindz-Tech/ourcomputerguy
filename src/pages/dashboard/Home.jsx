@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCart, setProducts } from '../../store/slice/CartSlice';
 import { useOrderMutation, useProductsQuery } from '../../store/service/HomeService';
 import { getLocalStorage } from '../../utils/LocalStorageUtills';
-import { Toaster } from 'react-hot-toast';
 import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from 'react-router-dom';
 import { Skeleton } from '@mui/material';
@@ -118,7 +117,6 @@ const Home = () => {
             </tbody>
           </table> : null}
       </div>
-      <Toaster />
     </div>
   )
 }
