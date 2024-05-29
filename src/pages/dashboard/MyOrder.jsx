@@ -5,25 +5,24 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { useMyOrderQuery } from '../../store/service/MyOrdersService';
 import { getLocalStorage } from '../../utils/LocalStorageUtills';
 import { useDispatch, useSelector } from 'react-redux';
-import { setProducts } from '../../store/slice/CartSlice';
+import { setMyOrder } from '../../store/slice/CartSlice';
 import Pagination from '../../components/Pagination';
 
 const MyOrder = () => {
   const UserUniqId = getLocalStorage('user').unique_id;
   const { data: myOrder } = useMyOrderQuery(UserUniqId);
   const dispatch = useDispatch();
-  const myOrderProduct = useSelector((state) => state?.ecom?.products?.data)
+  const myOrderProduct = useSelector((state) => state?.ecom?.myOrder?.data)
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
 
   useEffect(() => {
     if (myOrder) {
-      dispatch(setProducts(myOrder));
+      dispatch(setMyOrder(myOrder));
     }
   }, [myOrder, dispatch]);
 
   const totalPages = Math.ceil(myOrderProduct?.length / itemsPerPage);
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = myOrderProduct?.slice(indexOfFirstItem, indexOfLastItem);
@@ -32,7 +31,7 @@ const MyOrder = () => {
 
   const handleItemsPerPageChange = (event) => {
     setItemsPerPage(parseInt(event.target.value));
-    setCurrentPage(1); // Reset to the first page when changing items per page
+    setCurrentPage(1);
   };
 
   return (

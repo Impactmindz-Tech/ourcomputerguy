@@ -3,13 +3,17 @@ import { getLocalStorage, setLocalStorage } from "../../utils/LocalStorageUtills
 
 const initialState = {
     Cart: getLocalStorage('cart') || [],
-    products: []
+    products: [],
+    myOrder: []
 };
 
 const CartSlice = createSlice({
     name: "ecom",
     initialState,
     reducers: {
+        setMyOrder: (state, action) => {
+            state.myOrder = action.payload;
+        },
         setProducts: (state, action) => {
             state.products = action.payload;
         },
@@ -43,6 +47,6 @@ const CartSlice = createSlice({
     }
 });
 
-export const { setCart, setProducts, addToCart, removeFromCart, removeItemFromCart } = CartSlice.actions;
+export const { setCart, setProducts, addToCart, removeFromCart, removeItemFromCart , setMyOrder } = CartSlice.actions;
 
 export default CartSlice;
