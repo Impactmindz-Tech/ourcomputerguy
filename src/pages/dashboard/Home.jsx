@@ -4,7 +4,7 @@ import productData from '../../constant/Products';
 import ProductCart from '../../components/ProductCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCart, setProducts } from '../../store/slice/CartSlice';
-import { useOrderMutation, useProductsQuery } from '../../store/service/HomeService';
+import { useOrderMutation, useProductsQuery, useSliderQuery } from '../../store/service/HomeService';
 import { getLocalStorage } from '../../utils/LocalStorageUtills';
 import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from 'react-router-dom';
@@ -14,13 +14,13 @@ const Home = () => {
   const dispatch = useDispatch()
   const { data: Products, isError, isLoading } = useProductsQuery(getLocalStorage('user').unique_id)
   const allProducts = useSelector((state => state?.ecom?.products))
+  const { data: sliderImg } = useSliderQuery()
   const cart = useSelector((state => state?.ecom?.Cart))
   const [productsDetails, setProductsDetails] = useState([])
   const [orderData] = useOrderMutation()
   const [loading, setLoading] = useState(false);
   const [confirmation, setConfirmation] = React.useState(false);
   const navigate = useNavigate()
-
 
   useEffect(() => {
     try {
@@ -84,7 +84,7 @@ const Home = () => {
 
   return (
     <div className="container">
-      <Slider />
+      <Slider sliderImg={sliderImg}  />
       <div className='bg-white my-8 p-6'>
         <h1>Products</h1>
         <div className='grid grid-cols-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pt-5'>

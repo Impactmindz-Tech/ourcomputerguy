@@ -48,8 +48,8 @@ const Login = () => {
                     <input placeholder="********" className="w-full outline-none text-[12px] text-input-placeholder" type='password' id="password" {...register('password')} />
                 </div>
                 <p className='text-[red]'>{errors?.password?.message}</p>
-                <p className="text-[11px] my-2 mr-2 text-input-placeholder w-max ml-auto" >Forgot Password ?</p>
-                <button type="submit" className="sign-in text-center mt-3 bg-blue-900 text-white text-xs font-semibold px-12 py-3 rounded-lg">
+                {/* <p className="text-[11px] my-2 mr-2 text-input-placeholder w-max ml-auto" >Forgot Password ?</p> */}
+                <button type="submit" className="sign-in mt-8 text-center mt-3 bg-blue-900 text-white text-xs font-semibold px-12 py-3 rounded-lg">
                     <div className='flex items-center justify-center'>
                         <span className=''>Sign In</span>
                         <ClipLoader size={15} className='ml-2' color='#fff' loading={loading} />

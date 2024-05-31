@@ -6,6 +6,9 @@ const HomeService = baseApi.injectEndpoints({
         products: builder.query({
             query: (id) => (`/assigned_product/${id}`),
         }),
+        slider: builder.query({
+            query: () => (`/slider`),
+        }),
         order: builder.mutation({
             query: (payload) => ({
                 url: `order/${payload.id}`,
@@ -17,5 +20,5 @@ const HomeService = baseApi.injectEndpoints({
     }),
 });
 
-export const { useProductsQuery, useOrderMutation } = HomeService
+export const { useProductsQuery, useOrderMutation , useSliderQuery } = HomeService
 export default HomeService
