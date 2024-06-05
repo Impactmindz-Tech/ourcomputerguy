@@ -39,25 +39,25 @@ const MyOrder = () => {
       <div className="container">
         <h1 className="py-5">My Order</h1>
         {currentItems?.map((item, index) => (
-          <div key={index} className="bg-white mb-3 p-6 flex items-center justify-between border-[#e0e0e0] border">
-            <div className="flex gap-5">
+          <div key={index} className="bg-white mb-3 p-6 flex items-center justify-between border-[#e0e0e0] border order_lists">
+            <div className="flex gap-5 Orders">
               <ShoppingCartIcon sx={{ fontSize: '40px' }} />
-              <div>
+              <div className='order_details'>
                 <h2>Order Id: {item.order_id}</h2>
-                <p className="pt-1">SKU: {item.sku}</p>
+                <p className="pt-1 sku_text">SKU: {item.sku}</p>
                 <h2>
                   {item.currency} {item.totalAmount}
                 </h2>
               </div>
             </div>
-            <div className="text-center">
+            <div className="text-center product_order">
               <h2 className="font-semibold">Products This Order</h2>
               <h2 className="pt-2">{item.totalProducts}</h2>
             </div>
-            <div className="text-center">
+            <div className="text-center status_processing">
               <h2 className="font-semibold">Status</h2>
               <h2 className="font-semibold">{item.status}</h2>
-              <div className="text-center mt-3 gap-6 flex items-center justify-center">
+              <div className="text-center mt-3 gap-6 flex items-center justify-center eye_icon">
                 <Link to={`${item.order_id}`}>
                   <RemoveRedEyeIcon sx={{ color: '#646ea6' }} />
                 </Link>

@@ -170,6 +170,68 @@ caption {font-size:1.111em; font-weight:300; padding:10px 0;}
 	.sort-table-arrows button {bottom:0;}
 }
 @media (max-width:767px) {
+.pagination_number{
+	justify-content: start;
+}
+
+.items_per_page{
+	right: 19px;
+	top: 12px;
+}
+
+
+.main_logo_img{
+	width: 100px;
+}
+
+	.css-1ha5wk2-MuiSvgIcon-root{
+		width: 35px !important;
+	}
+	.order_lists{
+		padding: 17px;
+		align-items: normal;
+		display: block;
+	
+	}
+	.order_details{
+		display: flex;
+		align-items: baseline;
+	}
+	.sku_text{
+		margin-left: auto;
+	}
+	.Orders{
+		display: block;
+		gap: 0.5rem;
+	}
+	.product_order{
+		text-align: start;
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+	}
+	.total_price{
+		padding: 10px 7px !important;
+		font-size: 15px;
+	}
+	.remove_cart{
+		padding: 12px 32px;
+	}
+	.order_btn{
+		width: 100px;
+		padding: 12px !important;
+		margin-top: 0.5rem;
+	}
+.status_processing{
+	display: flex;
+	text-align: start;
+	align-items: baseline;
+}
+.eye_icon{
+	margin-left: auto;
+}
+
+
 	.sort-table thead tr {border-bottom:none; display:block; margin:10px 0; text-align:center;}
 	.sort-table thead tr th.arranger {display:none;}
 	.sort-table th {
@@ -185,3 +247,6 @@ caption {font-size:1.111em; font-weight:300; padding:10px 0;}
 	.sort-table td.title:before {display:none;}
 	.sort-table td.title {letter-spacing:.03em; padding-left:14px;}
 }
+
+
+/* extra css */

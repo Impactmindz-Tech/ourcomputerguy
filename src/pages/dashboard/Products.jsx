@@ -99,13 +99,13 @@ const Home = () => {
           <table className='w-full'>
             <tbody>
               <tr>
-                <th className='text-right w-[85%]'>Total Price:</th>
+                <th className='text-right w-[85%] total_price'>Total Price:</th>
                 <td className='text-right w-[15%]'>{cart[0]?.currency} {getTotalCartPrice()}</td>
               </tr>
               <tr>
                 <th className='w-1/2'></th>
                 <td className='w-1/2 text-right'>
-                  <button onClick={orderNow} type="submit" className="main_btn mt-14 bg-blue-900 text-white text-xs font-semibold px-12 py-3 rounded-lg">
+                  <button onClick={orderNow} type="submit" className="main_btn mt-14 bg-blue-900 text-white text-xs font-semibold px-12 py-3 order_btn rounded-lg">
                     <div className='flex items-center justify-center'>
                       <span className=''>Order Now</span>
                       <ClipLoader size={15} className='ml-2' color='#000' loading={loading} />

@@ -53,7 +53,7 @@ const ProductCart = ({ item }) => {
                     <div className='text-center mt-3'>
                         <button
                             type="button"
-                            className="main_btn mt-3 bg-black-200 text-[#fff] text-xs font-semibold px-12 py-3 rounded-lg"
+                            className="main_btn mt-3 bg-black-200 text-[#fff] text-xs font-semibold px-12 py-3 rounded-lg remove_cart"
                             onClick={() => handleRemoveCart()}
                         >
                             Remove From Cart

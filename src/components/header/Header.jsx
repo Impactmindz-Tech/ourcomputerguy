@@ -22,7 +22,7 @@ const Header = () => {
         <header className='bg-white py-5'>
             <div className="container">
                 <div className='flex items-center justify-between' >
-                    <div className='flex items-center gap-4'>
+                    <div className='flex items-center gap-4 main_logo_img'>
                         <img src={Images.Logo_img} alt="logo" />
                     </div>
                     <div className='sm:block cursor-pointer hidden' onClick={()=>setHeaderOpen(true)}>
